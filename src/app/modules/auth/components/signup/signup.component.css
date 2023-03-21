@@ -1,0 +1,9 @@
+div {
+  background-color: var(--dark-green);
+  height: 100vh;
+}
+
+div p {
+  color: var(--light);
+  margin-bottom: 0;
+}

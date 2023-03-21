@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+/* import cairo font */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+
+/* import fontawesome package */
+@import "~font-awesome/css/font-awesome.css";
+
+/* import bootstrap style file */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/* main style */
+:root {
+  --dark-green: #004f2f;
+  --green: #00bc71;
+  --gray: #737373;
+  --black: #171717;
+  --light: #f9f9f9;
+  --main-font: "Cairo", sans-serif;
+}
+
+/* shared style {Normalize|Reset} elements*/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
