@@ -1,9 +1,197 @@
-div {
-  background-color: var(--dark-green);
+.stepper {
+  position: relative;
+  padding: 50px 50px 0px;
   height: 100vh;
+  background-color: var(--bg-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div p {
+.stepper .head {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0px 50px;
+}
+.stepper .head .back-btn {
+  display: flex;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: var(--black);
+  font-size: 16px;
+}
+.stepper .back-btn:hover {
+  background-color: #f5f5f5;
+}
+.stepper .back-btn:focus,
+.stepper .back-btn:active {
+  border: none;
+}
+.stepper .back-btn .fa {
+  color: var(--green);
+}
+
+/* stepper steps */
+.stepper .steps .step {
+  padding: 20px 0px;
+}
+
+.stepper .steps .step::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: var(--light-gray);
+  inset: 0 12px;
+  z-index: 1;
+}
+
+.stepper .steps .step.active::before,
+.stepper .steps .step.completed::before {
+  background-color: var(--green);
+}
+
+.stepper .steps .step .step-title {
+  position: relative;
+  z-index: 2;
+}
+
+.stepper .steps .step .step-title .step-number {
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  display: inline-block;
+  margin-inline-end: 20px;
+  background-color: var(--light);
+  color: var(--light-gray);
+  border: 1px solid var(--light-gray);
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.stepper .steps .step.active .step-title .step-number {
+  background-color: var(--green);
   color: var(--light);
+  border: 1px solid var(--green);
+}
+
+.stepper .steps .step .step-title .step-text {
+  line-height: 24px;
+}
+.stepper .steps .step .step-title .step-text h6 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black);
+}
+.stepper .steps .step .step-title .step-text p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--gray);
+}
+
+/* stepper steps content */
+.stepper-content-container {
+  display: flex;
+  justify-content: start;
+  /* width: 100%; */
+  max-width: max-content;
+  height: 100%;
+  padding: 5px;
+  overflow: hidden;
+}
+/* .stepper-content{
+  transition: all 0.5s ease-in-out;
+}
+.stepper-content.show{transform: translateY(0%);display: block; }
+.stepper-content.hide{transform: translateY(-100%);display: none} */
+/* terms-conditions */
+.terms-conditions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 416px;
+  max-height: 85vh;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 1px #ebebeb;
+}
+.terms-conditions .terms-conditions-title {
+  color: var(--dark-green);
+  font-size: 24px;
+  line-height: 130%;
+  font-weight: 700;
+}
+.terms-conditions .terms-conditions-title span {
+  color: var(--green);
+}
+
+.terms-conditions p {
+  width: 100%;
+  height: 360px;
+  padding: 12px 24px;
+  color: #737373;
+  line-height: 28px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: justify;
+  overflow: auto;
+}
+
+.terms-conditions .action .check-input {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+.terms-conditions .action .check-input input {
+  width: 16px;
+  height: 16px;
+  margin-inline-end: 10px;
+}
+
+.terms-conditions .action button {
+  width: 100%;
+  max-height: 52px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: var(--green);
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+}
+
+.terms-conditions .action button:hover {
+  background-color: var(--dark-green);
+}
+
+/* ******** Error Section ********* */
+.error .error-msg h1 {
+  position: relative;
+  margin-top: 0;
+  color: var(--dark-green);
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.error .error-msg h1 span {
+  color: var(--green);
+}
+.error .error-msg p {
+  color: var(--gray);
+  font-size: 18px;
+  line-height: 1.6em;
+  font-weight: 300;
   margin-bottom: 0;
 }

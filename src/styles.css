@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 /* import cairo font */
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap"); */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
 /* import fontawesome package */
 @import "~font-awesome/css/font-awesome.css";
@@ -15,7 +16,10 @@
   --gray: #737373;
   --black: #171717;
   --light: #f9f9f9;
-  --main-font: "Cairo", sans-serif;
+  --bg-gray: #fafafa;
+  --light-gray: #d4d4d4;
+  /* --main-font: "Cairo", sans-serif; */
+  --main-font: 'Tajawal', sans-serif;
 }
 
 /* shared style {Normalize|Reset} elements*/
@@ -26,4 +30,15 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: var(--main-font);
+}
+
+::-webkit-scrollbar{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track{
+  background-color: var(--light-gray);
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--green);
 }

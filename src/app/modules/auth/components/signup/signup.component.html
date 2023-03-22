@@ -1,53 +1,259 @@
-<div class="d-flex justify-content-center align-items-center">
-  <p>صفحة الدخول</p>
+<div class="stepper" id="stepper">
+  <div class="container-fluid steps-container">
+    <div class="head">
+      <button
+        [ngStyle]="{
+          visibility:
+            storeCurrent > 0 || currentStep == 'error' ? 'visible' : 'hidden'
+        }"
+        type="button"
+        class="back-btn btn"
+        (click)="perviousStep()"
+      >
+        الرجوع
+        <i class="fa fa-arrow-left mx-1"></i>
+      </button>
+      <img src="/assets/images/logo.svg" alt="logo" />
+    </div>
+
+    <div class="row" *ngIf="currentStep != 'error'">
+      <div class="col-lg-4 d-flex align-items-center">
+        <div class="steps">
+          <div
+            class="step position-relative {{
+              currentStep == 'step1' ? 'active' : ''
+            }} {{ done.step1 ? 'completed' : '' }}"
+            id="1"
+          >
+            <div class="step-title d-flex align-items-center">
+              <span
+                class="step-number"
+                [ngStyle]="{
+                  borderColor: done.step1
+                    ? 'var(--green)'
+                    : 'var(--light-gray) '
+                }"
+              >
+                <span *ngIf="!done.step1">1</span>
+                <i
+                  *ngIf="done.step1"
+                  class="fa fa-check"
+                  [ngStyle]="{ color: done.step1 ? 'var(--green)' : ' ' }"
+                ></i>
+              </span>
+              <div class="step-text">
+                <h6 class="mb-0">شروط الإستخدام</h6>
+                <p class="mb-0">الموافقة على الشروط والأحكام</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="step position-relative {{
+              currentStep == 'step2' ? 'active' : ''
+            }} {{ done.step2 ? 'completed' : '' }}"
+            id="2"
+          >
+            <div class="step-title d-flex align-items-center">
+              <span
+                class="step-number"
+                [ngStyle]="{
+                  borderColor: done.step2 ? 'var(--green)' : 'var(--light-gray)'
+                }"
+              >
+                <span *ngIf="!done.step2">2</span>
+                <i
+                  *ngIf="done.step2"
+                  class="fa fa-check"
+                  [ngStyle]="{ color: done.step2 ? 'var(--green)' : ' ' }"
+                ></i>
+              </span>
+              <div class="step-text">
+                <h6 class="mb-0">حجز رمز الخدمة</h6>
+                <p class="mb-0">أنشئ رمز الخدمة الخاص بك</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="step position-relative {{
+              currentStep == 'step3' ? 'active' : ''
+            }} {{ done.step3 ? 'completed' : '' }}"
+            id="3"
+          >
+            <div class="step-title d-flex align-items-center">
+              <span
+                class="step-number"
+                [ngStyle]="{
+                  borderColor: done.step3
+                    ? 'var(--green)'
+                    : ' var(--light-gray)'
+                }"
+              >
+                <span *ngIf="!done.step3">3</span>
+                <i
+                  *ngIf="done.step3"
+                  class="fa fa-check"
+                  [ngStyle]="{ color: done.step3 ? 'var(--green)' : ' ' }"
+                ></i>
+              </span>
+              <div class="step-text">
+                <h6 class="mb-0">صفحة التسجيل</h6>
+                <p class="mb-0">انشئ بيانات الدخول لمدير النظام</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="step position-relative {{
+              currentStep == 'step4' ? 'active' : ''
+            }} {{ done.step4 ? 'completed' : '' }}"
+            id="4"
+          >
+            <div class="step-title d-flex align-items-center">
+              <span
+                class="step-number"
+                [ngStyle]="{
+                  borderColor: done.step4
+                    ? 'var(--green)'
+                    : ' var(--light-gray)'
+                }"
+              >
+                <span *ngIf="!done.step4">4</span>
+                <i
+                  *ngIf="done.step4"
+                  class="fa fa-check"
+                  [ngStyle]="{ color: done.step4 ? 'var(--green)' : ' ' }"
+                ></i>
+              </span>
+              <div class="step-text">
+                <h6 class="mb-0">الموجز الكامل</h6>
+                <p class="mb-0">تأكد من بياناتك واحجز</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="stepper-content-container">
+          <div
+            class="stepper-content"
+            *ngIf="currentStep == 'step1'"
+            [ngClass]="currentStep == 'step1' ? 'show' : 'hide'"
+          >
+            <div class="terms-conditions">
+              <h2 class="terms-conditions-title">
+                الشروط
+                <span>و الأحكام</span>
+              </h2>
+              <p>
+                هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
+                سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
+                الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم
+                إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن
+                استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو
+                (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي
+                وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج
+                عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر
+                العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين
+                ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق
+                الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها
+                الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة
+                من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو
+                مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص،
+                بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد
+                الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق
+                "ليتراسيت" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد
+                لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل "ألدوس
+                بايج مايكر" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص
+                لوريم إيبسوم.
+              </p>
+              <div class="action">
+                <form #form="ngForm">
+                  <div class="check-input">
+                    <input
+                      type="checkbox"
+                      #checkBox="ngModel"
+                      ngModel
+                      name="accept"
+                      required
+                    />
+                    <span
+                      >قرأتُ و اوافق على الشروط و الأحكام التي تم ذكرها
+                      أعلاه.</span
+                    >
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary d-block"
+                    [disabled]="checkBox.invalid"
+                    (click)="nextStep(1, 2)"
+                  >
+                    الخطوة التالية
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div
+            class="stepper-content"
+            *ngIf="currentStep == 'step2'"
+            [ngClass]="currentStep == 'step2' ? 'show' : 'hide'"
+          >
+            <button
+              type="button"
+              class="btn btn-primary d-block"
+              (click)="nextStep(2, 3)"
+            >
+              الخطوة التالية
+            </button>
+          </div>
+          <div
+            class="stepper-content"
+            *ngIf="currentStep == 'step3'"
+            [ngClass]="currentStep == 'step3' ? 'show' : 'hide'"
+          >
+            <button
+              type="button"
+              class="btn btn-primary d-block"
+              (click)="nextStep(3, 4)"
+            >
+              الخطوة التالية
+            </button>
+          </div>
+          <div
+            class="stepper-content"
+            *ngIf="currentStep == 'step4'"
+            [ngClass]="currentStep == 'step4' ? 'show' : 'hide'"
+          >
+            <div>Step 4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row error" *ngIf="currentStep == 'error'">
+      <div class="col-lg-6 d-flex align-items-center justify-content-center">
+        <div class="error-msg">
+          <h1>
+            عذرا فقد حدث !
+            <br />
+            <span> خطأ اثناء التحقق </span>
+          </h1>
+          <p>
+            اما ان صلاحية البريد المرسل قد انتهت او دخولك<br />
+            الى هذه الصفحة غير مصرح به.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex align-items-center justify-content-center">
+        <div class="error-img w-100">
+          <img
+            src=" /assets/images/error404.svg"
+            alt="error msg"
+            class="img-fluid"
+            style="max-width: 460px; max-height: 460px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- <div direction="vertical" height="800px" class="stepper" id="stepper">
-  <div class="steps-container">
-    <div class="steps">
-      <div class="step" icon="fa fa-pencil-alt" id="1">
-        <div class="step-title">
-          <span class="step-number">01</span>
-          <div class="step-text">Basic Information</div>
-        </div>
-      </div>
-      <div class="step" icon="fa fa-info-circle" id="2">
-        <div class="step-title">
-          <span class="step-number">02</span>
-          <div class="step-text">Personal Data</div>
-        </div>
-      </div>
-      <div class="step" icon="fa fa-book-reader" id="3">
-        <div class="step-title">
-          <span class="step-number">03</span>
-          <div class="step-text">Terms and Conditions</div>
-        </div>
-      </div>
-      <div class="step" icon="fa fa-check" id="4">
-        <div class="step-title">
-          <span class="step-number">04</span>
-          <div class="step-text">Finish</div>
-        </div>
-      </div>
-      <div class="step" icon="fa fa-pencil-alt" id="5">
-        <div class="step-title">
-          <span class="step-number">05</span>
-          <div class="step-text">More</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="stepper-content-container">
-    <div class="stepper-content fade-in" stepper-label="1">
-      <div>Step 1</div>
-    </div>
-    <div class="stepper-content fade-in" stepper-label="2">
-      <div>Step 2</div>
-    </div>
-    <div class="stepper-content fade-in" stepper-label="3">
-      <div>Step 3</div>
-    </div>
-    <div class="stepper-content fade-in" stepper-label="4">
-      <div>Step 4</div>
-    </div>
-  </div>
-</div> -->
