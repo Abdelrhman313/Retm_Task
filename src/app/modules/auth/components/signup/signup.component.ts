@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 // import { SectionAnimation } from 'src/app/shared/animations/section-animation';
 
@@ -23,6 +24,15 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   // store service Id Value
   serviceIdValue: any;
+
+  // store user Name Value
+  userNameValue: any;
+
+  // store Password Value
+  passwordValue: any;
+
+  subscriptions: Subscription[] = [];
+
   constructor(private authService: AuthService) {
     this.currentStep = 'step1';
     this.done = {
@@ -53,15 +63,33 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   checkServiceId(data: any, currnet?: any, next?: any) {
-    this.authService.checkServiceCode(data?.serviceId).subscribe({
-      next: (res: any) => {
-        this.nextStep(currnet, next);
-      },
-      error: (err: any) => {
-        this.currentStep = 'error';
-      },
-    });
+    this.subscriptions.push(
+      this.authService.checkServiceCode(data?.serviceId).subscribe({
+        next: (res: any) => {
+          this.nextStep(currnet, next);
+        },
+        error: (err: any) => {
+          this.currentStep = 'error';
+        },
+      })
+    );
   }
 
-  ngOnDestroy(): void {}
+  bookServiceId(data: any, currnet?: any, next?: any) {
+    this.nextStep(currnet, next);
+  }
+
+  completeRegister(data?: any) {
+    const requiredData = {
+      data: true,
+      name: this.userNameValue,
+    };
+    console.log(requiredData);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscribe) => {
+      subscribe.unsubscribe();
+    });
+  }
 }

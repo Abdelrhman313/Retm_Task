@@ -132,7 +132,7 @@
         </div>
       </div>
 
-      <div class="col-lg-8">
+      <div class="d-flex justify-content-center justify-content-lg-start col-lg-8">
         <div class="stepper-content-container">
           <div
             class="stepper-content"
@@ -258,20 +258,158 @@
             *ngIf="currentStep == 'step3'"
             [ngClass]="currentStep == 'step3' ? 'show' : 'hide'"
           >
-            <button
-              type="button"
-              class="btn btn-primary d-block"
-              (click)="nextStep(3, 4)"
-            >
-              الخطوة التالية
-            </button>
+            <div class="register text-center">
+              <h2 class="title">
+                صفحة
+                <span> التسجيل</span>
+              </h2>
+              <p class="lead">
+                أنشئ بيانات الدخول لمدير النظام, لتتمكن منالدخول وإدارة حسابك في
+                اي وقت!
+              </p>
+              <form #form="ngForm">
+                <div class="url-field position-relative">
+                  <button
+                    type="button"
+                    class="btn changeServiceBtn"
+                    (click)="perviousStep()"
+                  >
+                    تغيير
+                  </button>
+                  <div>
+                    <span class="text-span-31">https://</span>
+                    <span class="text-span-32"
+                      ><strong>{{ serviceIdValue }}</strong></span
+                    >.retm.sa
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://uploads-ssl.webflow.com/63b47a4f00ab98da785b4d1e/640bc1d42e2b161f8f0f54d9_Lock.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="userName">اسم المستخدم </label>
+                  <input
+                    type="text"
+                    name="username"
+                    #userName="ngModel"
+                    [(ngModel)]="userNameValue"
+                    id="userName"
+                    placeholder="إسم المستخدم الذي سيظهر في حسابك"
+                    required
+                    minlength="4"
+                    maxlength="16"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="password">الرقم السري </label>
+                  <input
+                    type="password"
+                    name="password"
+                    #password="ngModel"
+                    [(ngModel)]="passwordValue"
+                    id="password"
+                    placeholder="الرقم السري الخاص بالدخول للحساب"
+                    required
+                    minlength="8"
+                    maxlength="32"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="confirmPassword">تأكيد الرقم السري </label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    #confirmPassword="ngModel"
+                    ngModel
+                    id="confirmPassword"
+                    placeholder="أعد كتابة الرقم السري"
+                    required
+                    minlength="8"
+                    maxlength="32"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary d-block submitBtn"
+                  [disabled]="
+                    form.invalid || confirmPassword.value != password.value
+                  "
+                  (click)="bookServiceId(form.value, 3, 4)"
+                >
+                  حجز رمز الخدمة
+                </button>
+              </form>
+            </div>
           </div>
           <div
             class="stepper-content"
             *ngIf="currentStep == 'step4'"
             [ngClass]="currentStep == 'step4' ? 'show' : 'hide'"
           >
-            <div>Step 4</div>
+            <div class="all-data text-center">
+              <h2 class="title">
+                الموجز
+                <span> الكامل</span>
+              </h2>
+              <p class="lead">في مايلي موجز لبيانات مدير النظام الخاصة بك!</p>
+              <form #form="ngForm">
+                <div class="url-field position-relative">
+                  <button
+                    type="button"
+                    class="btn changeServiceBtn"
+                    (click)="perviousStep()"
+                  >
+                    تغيير
+                  </button>
+                  <div>
+                    <span class="text-span-31">https://</span>
+                    <span class="text-span-32"
+                      ><strong>{{ serviceIdValue }}</strong></span
+                    >.retm.sa
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://uploads-ssl.webflow.com/63b47a4f00ab98da785b4d1e/640bc1d42e2b161f8f0f54d9_Lock.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="form-input">
+                  <label for="userName">اسم المستخدم </label>
+                  <input
+                    type="text"
+                    name="username"
+                    #userName="ngModel"
+                    [(ngModel)]="userNameValue"
+                    id="userName"
+                    placeholder="إسم المستخدم الذي سيظهر في حسابك"
+                    required
+                    minlength="4"
+                    maxlength="16"
+                    autocomplete="off"
+                    style="font-weight: bold; font-size: 20px"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary d-block submitBtn"
+                  [disabled]="form.invalid"
+                  (click)="completeRegister(form.value)"
+                >
+                  الإنتقال لمدير النظام
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
