@@ -125,17 +125,17 @@
   background-color: #fff;
   box-shadow: 0px 0px 4px 1px #ebebeb;
 }
-.terms-conditions .terms-conditions-title {
+.title {
   color: var(--dark-green);
   font-size: 24px;
   line-height: 130%;
   font-weight: 700;
 }
-.terms-conditions .terms-conditions-title span {
+.title span {
   color: var(--green);
 }
 
-.terms-conditions p {
+p.info {
   width: 100%;
   height: 360px;
   padding: 12px 24px;
@@ -160,7 +160,7 @@
   margin-inline-end: 10px;
 }
 
-.terms-conditions .action button {
+button.submitBtn {
   width: 100%;
   max-height: 52px;
   padding: 12px 24px;
@@ -172,10 +172,82 @@
   border: none;
 }
 
-.terms-conditions .action button:hover {
+button.submitBtn:hover {
   background-color: var(--dark-green);
 }
 
+/* book-service */
+.book-service {
+  display: flex;
+  width: 100%;
+  max-width: 412px;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 574.9px) {
+  .book-service {
+    min-width: 300px;
+  }
+}
+.book-service h2 {
+  font-size: 40px;
+}
+.book-service p {
+  color: #737373;
+  line-height: 28px;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+.book-service form .form-input label {
+  display: block;
+  font-weight: 700;
+  text-align: right;
+  color: var(--black);
+}
+
+.book-service form .form-input input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 56px;
+  margin: 12px 0px;
+  padding: 18px 22px;
+  border: 1.5px solid #c7cad1;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+}
+.book-service form .form-input input:focus {
+  border-color: var(--green);
+  outline: 0;
+}
+
+.book-service .url-field {
+  display: flex;
+  margin: 12px 0px;
+  padding: 18px 22px;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px 0 hsla(0, 0%, 9%, 0.1);
+  direction: ltr;
+  color: #737373;
+  font-size: 16px;
+}
+
+.book-service .alert-msg {
+  margin-top: 12px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background-color: #f5f5f5;
+  color: #737373;
+  line-height: 24px;
+  text-align: right;
+}
 /* ******** Error Section ********* */
 .error .error-msg h1 {
   position: relative;

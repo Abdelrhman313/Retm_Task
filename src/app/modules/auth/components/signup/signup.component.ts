@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 // import { SectionAnimation } from 'src/app/shared/animations/section-animation';
 
 @Component({
@@ -16,7 +17,13 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   // using to handel back action
   storeCurrent: number;
-  constructor() {
+
+  // Validation Step
+  validStep: any;
+
+  // store service Id Value
+  serviceIdValue: any;
+  constructor(private authService: AuthService) {
     this.currentStep = 'step1';
     this.done = {
       step1: false,
@@ -43,6 +50,17 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.storeCurrent -= 1;
       console.log(this.storeCurrent);
     }
+  }
+
+  checkServiceId(data: any, currnet?: any, next?: any) {
+    this.authService.checkServiceCode(data?.serviceId).subscribe({
+      next: (res: any) => {
+        this.nextStep(currnet, next);
+      },
+      error: (err: any) => {
+        this.currentStep = 'error';
+      },
+    });
   }
 
   ngOnDestroy(): void {}

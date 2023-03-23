@@ -140,11 +140,11 @@
             [ngClass]="currentStep == 'step1' ? 'show' : 'hide'"
           >
             <div class="terms-conditions">
-              <h2 class="terms-conditions-title">
+              <h2 class="title">
                 الشروط
                 <span>و الأحكام</span>
               </h2>
-              <p>
+              <p class="info">
                 هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما
                 سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع
                 الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم
@@ -183,7 +183,7 @@
                   </div>
                   <button
                     type="button"
-                    class="btn btn-primary d-block"
+                    class="btn btn-primary d-block submitBtn"
                     [disabled]="checkBox.invalid"
                     (click)="nextStep(1, 2)"
                   >
@@ -198,13 +198,60 @@
             *ngIf="currentStep == 'step2'"
             [ngClass]="currentStep == 'step2' ? 'show' : 'hide'"
           >
-            <button
-              type="button"
-              class="btn btn-primary d-block"
-              (click)="nextStep(2, 3)"
-            >
-              الخطوة التالية
-            </button>
+            <div class="book-service text-center">
+              <h2 class="title">
+                حجز
+                <span> رمز الخدمة</span>
+              </h2>
+              <p class="lead">قم بإنشاء سحابتك عبر نظام رتم</p>
+              <form #form="ngForm">
+                <div class="form-input">
+                  <label for="serviceId">رمز الخدمة</label>
+                  <input
+                    type="text"
+                    name="serviceId"
+                    #serviceId="ngModel"
+                    [(ngModel)]="serviceIdValue"
+                    id="serviceId"
+                    placeholder="انشئ رمز الخدمة الخاص بك ( 4 حروف لاتينية )"
+                    required
+                    minlength="4"
+                    maxlength="16"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="url-field">
+                  <div>
+                    <span class="text-span-31">https://</span>
+                    <span class="text-span-32"
+                      ><strong>{{ serviceIdValue }}</strong></span
+                    >.retm.sa
+                  </div>
+                  <img
+                    loading="lazy"
+                    src="https://uploads-ssl.webflow.com/63b47a4f00ab98da785b4d1e/640bc1d42e2b161f8f0f54d9_Lock.svg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="alert-msg">
+                  رمز الخدمة هو ترميز فريد لا يجتمع اكثر من تاجر بنفس الرمز،
+                  غالبا تحتاج الرمز عند تسجيل الدخول او الدعم الفني.<br /><br />اختر
+                  رمز مكون من احرف انجليزية من 4 خانات او اكثر، بدون مسافات
+                  وارقام.
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-primary d-block submitBtn"
+                  [disabled]="form.invalid"
+                  (click)="checkServiceId(form.value, 2, 3)"
+                >
+                  حجز رمز الخدمة
+                </button>
+              </form>
+            </div>
           </div>
           <div
             class="stepper-content"

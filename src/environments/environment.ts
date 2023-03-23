@@ -1,3 +1,3 @@
 export const environment = {
-  endPoint: "signup.retm.sa/join"
+  endPoint: 'https://signup.retm.sa/join'
 };
