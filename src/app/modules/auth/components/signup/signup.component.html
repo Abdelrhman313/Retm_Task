@@ -132,7 +132,9 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-center justify-content-lg-start col-lg-8">
+      <div
+        class="d-flex justify-content-center justify-content-lg-start col-lg-8"
+      >
         <div class="stepper-content-container">
           <div
             class="stepper-content"
@@ -218,7 +220,14 @@
                     minlength="4"
                     maxlength="16"
                     autocomplete="off"
+                    pattern="[A-Za-z]{4}"
                   />
+                  <span
+                    *ngIf="serviceId.invalid && serviceId.touched"
+                    class="text-danger err-msg"
+                    >اختر رمز مكون من احرف انجليزية من 4 خانات او اكثر، بدون
+                    مسافات وارقام.</span
+                  >
                 </div>
 
                 <div class="url-field">
@@ -302,7 +311,15 @@
                     minlength="4"
                     maxlength="16"
                     autocomplete="off"
+                    pattern="[a-z ]*"
+                    (change)="log(form)"
                   />
+                  <span
+                    *ngIf="userName.invalid && userName.touched"
+                    class="text-danger err-msg"
+                    >اختر اسم المستخدم مكون من احرف انجليزية من 4 خانات او اكثر،
+                    بدون مسافات وارقام.</span
+                  >
                 </div>
 
                 <div class="form-input">
@@ -335,6 +352,16 @@
                     maxlength="32"
                     autocomplete="off"
                   />
+
+                  <span
+                    *ngIf="
+                      password.value != confirmPassword.value &&
+                      confirmPassword.touched
+                    "
+                    class="text-danger err-msg"
+                  >
+                    كلمة السر غير متطابقة يرجي اعادة المحاولة!
+                  </span>
                 </div>
 
                 <button
@@ -396,8 +423,15 @@
                     minlength="4"
                     maxlength="16"
                     autocomplete="off"
+                    pattern="[a-z ]*"
                     style="font-weight: bold; font-size: 20px"
                   />
+                  <span
+                    *ngIf="userName.invalid && userName.touched"
+                    class="text-danger err-msg"
+                    >اختر اسم المستخدم مكون من احرف انجليزية من 4 خانات او اكثر،
+                    بدون مسافات وارقام.</span
+                  >
                 </div>
 
                 <button

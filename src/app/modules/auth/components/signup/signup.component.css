@@ -1,7 +1,7 @@
 .stepper {
   position: relative;
   padding: 50px 50px 0px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--bg-gray);
   display: flex;
   justify-content: center;
@@ -107,6 +107,7 @@
   padding: 5px;
   overflow: hidden;
 }
+
 /* .stepper-content{
   transition: all 0.5s ease-in-out;
 }
@@ -264,7 +265,13 @@ button.submitBtn:hover {
   line-height: 24px;
   text-align: right;
 }
-
+.err-msg {
+  text-align: right !important;
+  font-size: 13px !important;
+  font-weight: 500;
+  display: block;
+  margin: -5px 5px 15px;
+}
 /* ******** register section ********* */
 .changeServiceBtn {
   position: absolute;
@@ -296,8 +303,12 @@ button.submitBtn:hover {
 
 /* Responsive */
 @media (max-width: 992px) {
+  .stepper {
+    padding: 0px 50px 0px;
+  }
+
   .container-fluid.steps-container {
-    padding-top: 150px;
+    padding-top: 75px;
   }
   .steps {
     display: flex;

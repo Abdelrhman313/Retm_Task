@@ -92,4 +92,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       subscribe.unsubscribe();
     });
   }
+  log(form: any) {
+    console.log(form);
+  }
 }
